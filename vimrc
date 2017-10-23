@@ -42,6 +42,8 @@
 	set laststatus=2                        " Always show status line
 	set number                              " Always show line numbers
     set noswapfile                          " Do not use swap files
+    set incsearch                           " Always show search matches while typing
+    set hlsearch                            " Highlight search matches
 " }
 
 " Formatting {
