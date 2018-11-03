@@ -22,7 +22,9 @@
 	Plugin 'ludovicchabant/vim-gutentags'   " Ctags generation
     Plugin 'scrooloose/nerdcommenter'       " Commenting
 	Plugin 'fatih/vim-go'			        " Go
-    Plugin 'vim-scripts/Conque-GDB'         " GDB
+    Plugin 'pangloss/vim-javascript'        " JavaScript
+    Plugin 'mxw/vim-jsx'                    " JSX
+    Plugin 'maksimr/vim-jsbeautify'         " JSBeautify
 
 	call vundle#end()
 " }
@@ -101,28 +103,5 @@
 		let g:ycm_autoclose_preview_window_after_insertion = 1
 		let g:ycm_collect_identifiers_from_tags_files = 1
 	" }
-
-    " GDB {
-        let g:ConqueTerm_Color = 2                                                            
-        let g:ConqueTerm_CloseOnEnd = 1                                                       
-        let g:ConqueTerm_StartMessages = 0                                                    
-                                                                                              
-        function DebugSession()                                                               
-            silent make -o vimgdb -gcflags "-N -l"                                            
-            redraw!                                                                           
-            if (filereadable("vimgdb"))                                                       
-                ConqueGdb vimgdb                                                              
-            else                                                                              
-                echom "Couldn't find debug file"                                              
-            endif                                                                             
-        endfunction                                                                           
-        function DebugSessionCleanup(term)                                                    
-            if (filereadable("vimgdb"))                                                       
-                let ds=delete("vimgdb")                                                       
-            endif                                                                             
-        endfunction                                                                           
-        call conque_term#register_function("after_close", "DebugSessionCleanup")              
-        nmap <leader>d :call DebugSession()<CR>;
-    " }
 
 " }
